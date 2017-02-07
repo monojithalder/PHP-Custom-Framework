@@ -3,13 +3,13 @@
  * Created by PhpStorm.
  * User: monoit
  * Date: 3/2/17
- * Time: 3:23 PM
+ * Time: 3:59 PM
  */
 
-namespace config;
+namespace controller;
 
 
-class Database
+class controller
 {
 
 }
