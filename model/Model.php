@@ -20,9 +20,9 @@ class Model
     //This method is used for get data from a table
     public function get()
     {
-        $conn = new Database();
+        $mysqli = new Database();
         $sql = "SELECT * FROM ".$this->table;
-        $result = mysqli_query($conn,$sql);
+        $result = $mysqli->connection->query($sql);
         $row = $result->fetch_array();
         return $row;
 

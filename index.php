@@ -1,5 +1,5 @@
 <?php
-    //phpinfo();
+$a = 0;
 foreach (glob("core/*.php") as $filename)
 {
     require($filename);

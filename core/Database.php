@@ -19,11 +19,11 @@ class Database
         $password = $config['connections']['mysql']['password'];
         $dbname = $config['connections']['mysql']['database'];
         ///echo $config['default'];
-        $conn = mysqli_connect($servername,$username,$password,$dbname);
-        if(!$conn)
-        {
-            die("connection failed".mysqli_connect_error());
+        $mysqli = new \mysqli($servername,$username,$password,$dbname);
+        if ($mysqli->connect_error) {
+            die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
         }
-        $this->connection = $conn;
+
+        $this->connection = $mysqli;
     }
 }
