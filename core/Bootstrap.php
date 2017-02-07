@@ -11,5 +11,8 @@ namespace core;
 
 class Bootstrap
 {
-
+    public function loadView($view_name)
+    {
+        include $_SERVER['DOCUMENT_ROOT'].'/views/'.$view_name.'.php';
+    }
 }

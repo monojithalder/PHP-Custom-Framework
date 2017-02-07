@@ -7,18 +7,26 @@
  */
 
 namespace controller;
-
+use core\Bootstrap;
 
 class User
 {
+    public $test;
     function __construct()
     {
-
+        $this->test = 'Hello';
     }
 
     //This method is used for show all users
     public function showUser() {
+        $bootstrap = new Bootstrap();
+        $bootstrap->loadView('welcome');
+    }
 
+    public function home()
+    {
+        $bootstrap = new Bootstrap();
+        $bootstrap->loadView('home');
     }
 
     //This method is used for create new users
