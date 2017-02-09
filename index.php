@@ -1,6 +1,10 @@
 <?php
 session_start();
 $a = 0;
+foreach (glob("library/*.php") as $filename)
+{
+    require($filename);
+}
 foreach (glob("core/*.php") as $filename)
 {
     require($filename);
@@ -13,6 +17,7 @@ foreach (glob("model/*.php") as $filename)
 {
     require($filename);
 }
+
 //require_once('core');
 use core\Database;
 use core\Bootstrap;

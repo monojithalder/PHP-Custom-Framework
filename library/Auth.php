@@ -11,7 +11,7 @@ use core\Session;
 use model\UserModel;
 use core\Bootstrap;
 
-class Auth Extends Bootstrap
+trait Auth
 {
     protected $redirect_path = '/myaccount';
     function __construct()
@@ -22,14 +22,22 @@ class Auth Extends Bootstrap
     //This method is used for show login form
     public function showLogin()
     {
-        $this->loadView('login');
+        $bootstrap = new Bootstrap();
+        $bootstrap->loadView('login');
+    }
+
+    //This method is used for handel post login
+    public function postLogin()
+    {
+        $data = $_POST;
+        $this->doLogin($data);
     }
 
     //This method is used for do login
     public function doLogin(array $auth_data)
     {
         $user_model = new UserModel();
-        $user_data  = $user_model->where(['email','=',$auth_data['email']])->get();
+        $user_data  = $user_model->where(['email','=',$auth_data['email']])->where(['password','=',$auth_data['password']])->get();
         if(!empty($user_data)) {
             Session::set(['user_id' => $user_data['id'],'email' => $user_data['email']]);
             return $user_data;

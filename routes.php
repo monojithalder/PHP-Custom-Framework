@@ -12,4 +12,8 @@ $routes = [
         'controller' => 'TestController',
         'function'     => 'index'
     ],
+    '/login' => [
+        'controller' => 'AuthController',
+        'function'     => 'showLogin'
+    ],
 ];
