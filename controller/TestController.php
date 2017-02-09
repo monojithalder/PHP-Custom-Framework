@@ -25,9 +25,11 @@ class TestController Extends Controller
         $bootstrap->loadView('test_view');*/
         //echo $this->test;
         Session::set(array('id' => 1));
-        $this->bootstrap->loadView('test_view',array('data' => 'Hii! Welcome to PHP based OOPS training'));
+        //$this->bootstrap->loadView('test_view',array('data' => 'Hii! Welcome to PHP based OOPS training'));
         $user_model = new UserModel();
-        $result = $user_model->get();
+        $result = $user_model->where(['id','=',2])->get();
+        //$result = $user_model->get();
+        print_r($result);
 
     }
 }
