@@ -7,21 +7,23 @@
  */
 
 namespace controller;
+use controller\Controller;
 use core\Bootstrap;
 use model\UserModel;
 
-class TestController
+class TestController Extends Controller
 {
-    public $test;
     function __construct()
     {
-
+        parent::__construct();
     }
 
     public function index()
     {
 /*        $bootstrap = new Bootstrap();
         $bootstrap->loadView('test_view');*/
+        //echo $this->test;
+        $this->bootstrap->loadView('test_view',array('data' => 'Hii! Welcome to PHP based OOPS training'));
         $user_model = new UserModel();
         $result = $user_model->get();
 

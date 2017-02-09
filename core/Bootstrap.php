@@ -11,8 +11,11 @@ namespace core;
 
 class Bootstrap
 {
-    public function loadView($view_name)
+    public function loadView($view_name,array $data)
     {
+        foreach ($data as $key => $value) {
+            $$key = $value;
+        }
         include $_SERVER['DOCUMENT_ROOT'].'/views/'.$view_name.'.php';
     }
 }
