@@ -11,7 +11,7 @@ namespace core;
 
 class Bootstrap
 {
-    public function loadView($view_name,array $data)
+    public function loadView($view_name,array $data = array())
     {
         foreach ($data as $key => $value) {
             $$key = $value;

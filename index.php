@@ -1,4 +1,5 @@
 <?php
+session_start();
 $a = 0;
 foreach (glob("core/*.php") as $filename)
 {

@@ -10,6 +10,7 @@ namespace controller;
 use controller\Controller;
 use core\Bootstrap;
 use model\UserModel;
+use core\Session;
 
 class TestController Extends Controller
 {
@@ -23,6 +24,7 @@ class TestController Extends Controller
 /*        $bootstrap = new Bootstrap();
         $bootstrap->loadView('test_view');*/
         //echo $this->test;
+        Session::set(array('id' => 1));
         $this->bootstrap->loadView('test_view',array('data' => 'Hii! Welcome to PHP based OOPS training'));
         $user_model = new UserModel();
         $result = $user_model->get();

@@ -8,6 +8,7 @@
 
 namespace controller;
 use core\Bootstrap;
+use core\Session;
 
 class User
 {
@@ -19,14 +20,16 @@ class User
 
     //This method is used for show all users
     public function showUser() {
+        Session::destroy();
         $bootstrap = new Bootstrap();
         $bootstrap->loadView('welcome');
     }
 
     public function home()
     {
-        $bootstrap = new Bootstrap();
-        $bootstrap->loadView('home');
+        echo Session::get('id');
+        //$bootstrap = new Bootstrap();
+        //$bootstrap->loadView('home');
     }
 
     //This method is used for create new users
