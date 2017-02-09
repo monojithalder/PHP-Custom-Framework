@@ -16,6 +16,12 @@ class Bootstrap
         foreach ($data as $key => $value) {
             $$key = $value;
         }
-        include $_SERVER['DOCUMENT_ROOT'].'/views/'.$view_name.'.php';
+        $file_path = $_SERVER['DOCUMENT_ROOT'].'/views/'.$view_name.'.php';
+        if(file_exists($file_path)) {
+            include $_SERVER['DOCUMENT_ROOT'] . '/views/' . $view_name . '.php';
+        }
+        else {
+            echo "Can not found view";
+        }
     }
 }

@@ -25,8 +25,11 @@ class Model
         $mysqli = new Database();
         ///$sql = "SELECT * FROM ".$this->table;
         $result = $mysqli->connection->query($this->query);
-        $row = $result->fetch_array();
-        return $row;
+        if(!empty($result)) {
+            $row = $result->fetch_array();
+            return $row;
+        }
+        return array();
 
     }
 
