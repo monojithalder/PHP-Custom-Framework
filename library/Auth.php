@@ -10,18 +10,17 @@ namespace library;
 use core\Session;
 use model\UserModel;
 use core\Bootstrap;
+use library\Redirect;
 
 trait Auth
 {
-    protected $redirect_path = '/myaccount';
-    function __construct()
-    {
-
-    }
+    protected $redirect_path = 'myaccount';
+    protected $redirect;
 
     //This method is used for show login form
     public function showLogin()
     {
+        $this->redirectIfLogedin();
         $bootstrap = new Bootstrap();
         $bootstrap->loadView('login');
     }
@@ -37,10 +36,12 @@ trait Auth
     public function doLogin(array $auth_data)
     {
         $user_model = new UserModel();
-        $user_data  = $user_model->where(['email','=',$auth_data['email']])->where(['password','=',$auth_data['password']])->get();
+        $user_data  = $user_model->where(['email','=',$auth_data['email']])->where(['password','=',(string)$auth_data['password']])->get();
         if(!empty($user_data)) {
             Session::set(['user_id' => $user_data['id'],'email' => $user_data['email']]);
-            return $user_data;
+            //$user_data;
+            $redirect_library = new Redirect();
+            $redirect_library->go($this->redirect_path);
         }
         else {
 
@@ -56,6 +57,16 @@ trait Auth
         }
         else {
             return array('login' => FALSE);
+        }
+    }
+    
+    //This method is redirect is login
+    public function redirectIfLogedin()
+    {
+        $session_user_id = Session::get('user_id');
+        if(!empty($session_user_id)) {
+            $redirect_library = new Redirect();
+            $redirect_library->go($this->redirect_path);
         }
     }
 }

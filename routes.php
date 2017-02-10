@@ -16,4 +16,8 @@ $routes = [
         'controller' => 'AuthController',
         'function'     => 'showLogin'
     ],
+    '/dologin' => [
+        'controller' => 'AuthController',
+        'function'     => 'postLogin'
+    ],
 ];

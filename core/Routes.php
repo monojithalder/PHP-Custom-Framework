@@ -33,6 +33,9 @@ class Routes
             $controller_obj = new $class;
             return $controller_obj->$function_name();
         }
+        else {
+            echo "Route not found";
+        }
 
     }
 }

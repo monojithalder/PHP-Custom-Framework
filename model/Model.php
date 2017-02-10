@@ -16,7 +16,7 @@ class Model
     function __construct($table)
     {
         $this->table = $table;
-        $this->query = 'SELECT * FROM '.$this->table;
+        $this->query = 'SELECT * FROM '.$this->table.' WHERE 1';
     }
 
     //This method is used for get data from a table
@@ -35,7 +35,10 @@ class Model
 
     //This method is used for implement where condition in sql query
     public function where(array $where_data) {
-        $this->query .= ' WHERE '.$where_data[0].' '.$where_data[1].' '.$where_data[2];
+        if(is_string($where_data[2])) {
+            $where_data[2] = "'".$where_data[2]."'";
+        }
+        $this->query .= " AND ".$where_data[0]." ".$where_data[1]." ".$where_data[2];
         return $this;
     }
 
