@@ -28,8 +28,8 @@ class User
     public function home()
     {
         echo Session::get('id');
-        //$bootstrap = new Bootstrap();
-        //$bootstrap->loadView('home');
+        $bootstrap = new Bootstrap();
+        $bootstrap->loadView('home');
     }
 
     //This method is used for create new users

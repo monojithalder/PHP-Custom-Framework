@@ -9,8 +9,10 @@ foreach (glob("core/*.php") as $filename)
 {
     require($filename);
 }
+require ('controller/Controller.php');
 foreach (glob("controller/*.php") as $filename)
 {
+    if($filename != 'controller/Controller.php')
     require($filename);
 }
 foreach (glob("model/*.php") as $filename)

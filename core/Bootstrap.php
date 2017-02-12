@@ -16,6 +16,7 @@ class Bootstrap
         foreach ($data as $key => $value) {
             $$key = $value;
         }
+        $bootstrap = $this;
         $file_path = $_SERVER['DOCUMENT_ROOT'].'/views/'.$view_name.'.php';
         if(file_exists($file_path)) {
             include $_SERVER['DOCUMENT_ROOT'] . '/views/' . $view_name . '.php';
@@ -23,5 +24,17 @@ class Bootstrap
         else {
             echo "Can not found view";
         }
+    }
+
+    //This method is used for generate url for link
+    public static function pathTo($path)
+    {
+        return $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_ADDR'].'/'.$path;
+    }
+
+    //This method is used for generate path for asset
+    public static function pathAsset($path)
+    {
+        return $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_ADDR'].'/assets/'.$path;
     }
 }

@@ -8,9 +8,10 @@
 
 namespace controller;
 
+use controller\Controller;
 use library\Auth;
 
-class AuthController
+class AuthController Extends Controller
 {
     use Auth;
 
