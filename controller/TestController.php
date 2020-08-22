@@ -30,6 +30,7 @@ class TestController Extends Controller
         $result = $user_model->where(['id','=',2])->get();
         //$result = $user_model->get();
         print_r($result);
+        $this->bootstrap->loadView('welcome');
 
     }
 }

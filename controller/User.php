@@ -10,26 +10,19 @@ namespace controller;
 use core\Bootstrap;
 use core\Session;
 
-class User
+class User extends Controller
 {
     public $test;
-    function __construct()
-    {
-        $this->test = 'Hello';
-    }
-
     //This method is used for show all users
     public function showUser() {
         Session::destroy();
-        $bootstrap = new Bootstrap();
-        $bootstrap->loadView('welcome');
+        $this->bootstrap->loadView('welcome');
     }
 
     public function home()
     {
         echo Session::get('id');
-        $bootstrap = new Bootstrap();
-        $bootstrap->loadView('home');
+        $this->bootstrap->loadView('home');
     }
 
     //This method is used for create new users

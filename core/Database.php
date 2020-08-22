@@ -20,10 +20,9 @@ class Database
         $dbname = $config['connections']['mysql']['database'];
         ///echo $config['default'];
         $mysqli = new \mysqli($servername,$username,$password,$dbname);
-        if ($mysqli->connect_error) {
-            die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
+        if (!$mysqli->connect_error) {
+            //die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
+            $this->connection = $mysqli;
         }
-
-        $this->connection = $mysqli;
     }
 }
